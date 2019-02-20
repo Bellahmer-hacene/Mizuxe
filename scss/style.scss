@@ -12,3 +12,17 @@ body{
         padding-right:1.4rem;
     }
 }
+#showcase {
+  position: relative;
+  background: url('../img/mountains.jpg');
+  min-height: 600px;
+
+  .primary-overlay {
+    background: $primary-overlay;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
