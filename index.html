@@ -13,7 +13,7 @@
   <title>Bootstrap Theme</title>
 </head>
 
-<body>
+<body id="home" data-spy="scroll" data-target="#main-nav">
   <nav class="navbar navbar-expand-md navbar-light fixed-top py-4" id="main-nav">
     <div class="container">
       <a href="#home" class="navbar-brand">
@@ -333,6 +333,64 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <h3>Get In Touch</h3>
+          <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, temporibus!</p>
+          <form>
+            <div class="input-group input-group-lg mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-user"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="Name">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="Email">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-pencil-alt"></i>
+                </span>
+              </div>
+              <textarea class="form-control" placeholder="Message" rows="5"></textarea>
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg">
+          </form>
+        </div>
+
+        <div class="col-lg-3 align-self-center">
+          <img src="img/mlogo.png" alt="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer id="main-footer" class="py-5 bg-primary text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-6 ml-auto">
+          <p class="lead">
+            Copyright &copy;
+            <span id="year"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
@@ -341,10 +399,29 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
     crossorigin="anonymous"></script>
 
-  <script>
-    // Get the current year for the copyright
-    $('#year').text(new Date().getFullYear());
-  </script>
+    <script>
+      // Get the current year for the copyright
+      $('#year').text(new Date().getFullYear());
+  
+      // Init Scrollspy
+      $('body').scrollspy({ target: '#main-nav' });
+  
+      // Smooth Scrolling
+      $("#main-nav a").on('click', function (event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+  
+          const hash = this.hash;
+  
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function () {
+  
+            window.location.hash = hash;
+          });
+        }
+      });
+    </script>
 </body>
 
 </html>
